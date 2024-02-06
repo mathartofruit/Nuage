@@ -1,0 +1,218 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-gltf-model id="nuage1" src="Nuage1.glb"></a-gltf-model>
+    <a-gltf-model id="nuage2" src="Nuage2.glb"></a-gltf-model>
+    <a-gltf-model id="nuage3" src="Nuage3.glb"></a-gltf-model>
+    <a-gltf-model id="nuage4" src="Nuage4.glb"></a-gltf-model>
+    <a-gltf-model id="nuage5" src="Nuage5.glb"></a-gltf-model>
+    <a-gltf-model id="nuage6" src="Nuage6.glb"></a-gltf-model>
+    <a-gltf-model id="nuage7" src="Nuage7.glb"></a-gltf-model>
+    <a-gltf-model id="nuage8" src="Nuage8.glb"></a-gltf-model>
+    <a-gltf-model id="nuage+txt" src="Nuage+Text.glb"></a-gltf-model>
+    <a-gltf-model id="nuageMain" src="NuagePrincipal.glb"></a-gltf-model>
+    <a-entity position="0 65 0" rotation="-90 0 0">
+      <a-camera></a-camera>
+    </a-entity>
+    <a-light position="50 600 -90"></a-light>
+  </a-scene>
+
+  <script>
+    document.getElementById('nuage1').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 7',
+      dur: 1000,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage2').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 -2',
+      dur: 1200,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage3').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 8',
+      dur: 1700,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage4').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 -12',
+      dur: 2000,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage5').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 2',
+      dur: 700,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage6').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 -10',
+      dur: 1800,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage7').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 15',
+      dur: 2500,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage8').setAttribute('animation', {
+      property: 'position',
+      to: '0 0 -10',
+      dur: 1800,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuage+txt').setAttribute('animation', {
+      property: 'position',
+      from: '0 0 8',
+      to: '0 0 -8',
+      dur: 1800,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    document.getElementById('nuageMain').setAttribute('animation', {
+      property: 'position',
+      from: '0 0 8',
+      to: '0 0 -8',
+      dur: 1800,
+      dir: 'alternate',
+      easing: 'linear',
+      loop: true
+    });
+
+    setTimeout(function () {
+      document.getElementById('nuage+txt').removeAttribute('animation');
+
+      document.getElementById('nuage+txt').setAttribute('animation__position', {
+        property: 'position',
+        to: '-100 0 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+
+      // Disparition de l'objet après la fin de l'animation
+      setTimeout(function () {
+        document.getElementById('nuage+txt').setAttribute('visible', 'false');
+      }, 1000); // Attendre la fin de l'animation avant de rendre l'objet invisible
+    }, 4000);
+
+    setTimeout(function () {
+      document.getElementById('nuageMain').setAttribute('animation', {
+        property: 'scale',
+        from: '1 1 1',
+        to: '2 2 2', // Échelle finale uniforme
+        property: 'position',
+        to: '0 35 0',
+        dur: 1000, // Durée de l'animation en millisecondes
+        easing: 'linear',
+        loop: false // L'animation ne se répète pas
+      });
+    }, 4500);
+
+    setTimeout(function () {
+      // Arrêter les animations des 8 premiers objets
+      for (let i = 1; i <= 8; i++) {
+        document.getElementById('nuage' + i).removeAttribute('animation');
+      }
+
+      // Faire monter les objets à des hauteurs différentes
+      document.getElementById('nuage1').setAttribute('animation', {
+        property: 'position',
+        to: '0 5 0', // Hauteur différente pour chaque objet
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage2').setAttribute('animation', {
+        property: 'position',
+        to: '1 15 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage3').setAttribute('animation', {
+        property: 'position',
+        to: '2 6 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage4').setAttribute('animation', {
+        property: 'position',
+        to: '30 3 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage5').setAttribute('animation', {
+        property: 'position',
+        to: '4 27 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage6').setAttribute('animation', {
+        property: 'position',
+        to: '5 16 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage7').setAttribute('animation', {
+        property: 'position',
+        to: '-36 8 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+      document.getElementById('nuage8').setAttribute('animation', {
+        property: 'position',
+        to: '7 43 0',
+        dur: 1000,
+        easing: 'linear'
+      });
+    }, 4500);
+
+    setTimeout(function() {
+      var scene = document.querySelector('a-scene');
+      var video = document.createElement('a-video');
+      video.setAttribute('src', 'Video.mp4');
+      video.setAttribute('position', '0.1 56.90 -1.35');
+      video.setAttribute('rotation', '-90 0 0');
+      video.setAttribute('width', '6.5');
+      video.setAttribute('height', '3.8');
+      video.setAttribute('autoplay', true); // Assure que la vidéo se lance automatiquement
+      scene.appendChild(video);
+    }, 5500);
+  </script>
+</body>
+
+</html>
