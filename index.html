@@ -28,36 +28,6 @@
 
   <script>
 
-var hiroMarker = document.getElementById('hiroMarker');
-
-    hiroMarker.addEventListener('markerFound', function () {
-      // Démarrer les animations ici
-      document.getElementById('nuage1').setAttribute('animation', {
-        property: 'position',
-        to: '0 0 7',
-        dur: 1000,
-        dir: 'alternate',
-        easing: 'linear',
-        loop: true
-      });
-      
-      hiroMarker.addEventListener('markerLost', function () {
-      // Arrêter les animations ici
-      document.getElementById('nuage1').removeAttribute('animation');
-      document.getElementById('nuage2').removeAttribute('animation');
-      document.getElementById('nuage3').removeAttribute('animation');
-      document.getElementById('nuage4').removeAttribute('animation');
-      document.getElementById('nuage5').removeAttribute('animation');
-      document.getElementById('nuage6').removeAttribute('animation');
-      document.getElementById('nuage7').removeAttribute('animation');
-      document.getElementById('nuage8').removeAttribute('animation');
-
-      // Supprimer la vidéo lors de la perte du marqueur
-      var video = document.querySelector('a-video');
-      if (video) {
-        video.parentNode.removeChild(video);
-      }
-    });
 
       // ... Ajoutez d'autres animations ici ...
 
@@ -265,7 +235,37 @@ var hiroMarker = document.getElementById('hiroMarker');
       scene.appendChild(video);
     }, 5500);
   
-    
+    var hiroMarker = document.getElementById('hiroMarker');
+
+    hiroMarker.addEventListener('markerFound', function () {
+      // Démarrer les animations ici
+      document.getElementById('nuage1').setAttribute('animation', {
+        property: 'position',
+        to: '0 0 7',
+        dur: 1000,
+        dir: 'alternate',
+        easing: 'linear',
+        loop: true
+      });
+      
+      hiroMarker.addEventListener('markerLost', function () {
+      // Arrêter les animations ici
+      document.getElementById('nuage1').removeAttribute('animation');
+      document.getElementById('nuage2').removeAttribute('animation');
+      document.getElementById('nuage3').removeAttribute('animation');
+      document.getElementById('nuage4').removeAttribute('animation');
+      document.getElementById('nuage5').removeAttribute('animation');
+      document.getElementById('nuage6').removeAttribute('animation');
+      document.getElementById('nuage7').removeAttribute('animation');
+      document.getElementById('nuage8').removeAttribute('animation');
+
+      // Supprimer la vidéo lors de la perte du marqueur
+      var video = document.querySelector('a-video');
+      if (video) {
+        video.parentNode.removeChild(video);
+      }
+    });
+
   </script>
 </body>
 
