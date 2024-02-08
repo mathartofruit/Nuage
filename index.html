@@ -56,23 +56,6 @@ var hiroMarker = document.getElementById('hiroMarker');
       document.querySelector('a-scene').appendChild(video);
     });
 
-   hiroMarker.addEventListener('markerLost', function () {
-      // Arrêter les animations ici
-      document.getElementById('nuage1').removeAttribute('animation');
-      document.getElementById('nuage2').removeAttribute('animation');
-      document.getElementById('nuage3').removeAttribute('animation');
-      document.getElementById('nuage4').removeAttribute('animation');
-      document.getElementById('nuage5').removeAttribute('animation');
-      document.getElementById('nuage6').removeAttribute('animation');
-      document.getElementById('nuage7').removeAttribute('animation');
-      document.getElementById('nuage8').removeAttribute('animation');
-
-      // Supprimer la vidéo lors de la perte du marqueur
-      var video = document.querySelector('a-video');
-      if (video) {
-        video.parentNode.removeChild(video);
-      }
-    });
     
     document.getElementById('nuage1').setAttribute('animation', {
       property: 'position',
@@ -263,6 +246,24 @@ var hiroMarker = document.getElementById('hiroMarker');
       video.setAttribute('autoplay', true); // Assure que la vidéo se lance automatiquement
       scene.appendChild(video);
     }, 5500);
+  
+    hiroMarker.addEventListener('markerLost', function () {
+      // Arrêter les animations ici
+      document.getElementById('nuage1').removeAttribute('animation');
+      document.getElementById('nuage2').removeAttribute('animation');
+      document.getElementById('nuage3').removeAttribute('animation');
+      document.getElementById('nuage4').removeAttribute('animation');
+      document.getElementById('nuage5').removeAttribute('animation');
+      document.getElementById('nuage6').removeAttribute('animation');
+      document.getElementById('nuage7').removeAttribute('animation');
+      document.getElementById('nuage8').removeAttribute('animation');
+
+      // Supprimer la vidéo lors de la perte du marqueur
+      var video = document.querySelector('a-video');
+      if (video) {
+        video.parentNode.removeChild(video);
+      }
+    });
   </script>
 </body>
 
