@@ -27,6 +27,46 @@
   </a-scene>
 
   <script>
+
+var hiroMarker = document.getElementById('hiroMarker');
+
+    hiroMarker.addEventListener('markerFound', function () {
+      // Démarrer les animations ici
+      document.getElementById('nuage1').setAttribute('animation', {
+        property: 'position',
+        to: '0 0 7',
+        dur: 1000,
+        dir: 'alternate',
+        easing: 'linear',
+        loop: true
+      });
+
+      // ... Ajoutez d'autres animations ici ...
+
+      // Démarrer la vidéo avec la position liée à nuageMain
+      var video = document.createElement('a-video');
+      video.setAttribute('src', 'Video.mp4');
+      video.setAttribute('rotation', '-90 0 0');
+      video.setAttribute('width', '6.5');
+      video.setAttribute('height', '3.8');
+      video.setAttribute('autoplay', true);
+      // Lier la position de la vidéo à celle de nuageMain
+      var nuageMainPosition = document.getElementById('nuageMain').getAttribute('position');
+      video.setAttribute('position', nuageMainPosition.x + ' ' + nuageMainPosition.y + ' ' + nuageMainPosition.z);
+      document.querySelector('a-scene').appendChild(video);
+    });
+
+    hiroMarker.addEventListener('markerLost', function () {
+      // Arrêter les animations ici
+      document.getElementById('nuage1').removeAttribute('animation');
+
+      // Supprimer la vidéo lors de la perte du marqueur
+      var video = document.querySelector('a-video');
+      if (video) {
+        video.parentNode.removeChild(video);
+      }
+    });
+    
     document.getElementById('nuage1').setAttribute('animation', {
       property: 'position',
       to: '0 0 7',
