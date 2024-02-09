@@ -7,18 +7,19 @@
 </head>
 
 <body>
-  <a-scene position="0 -25 0" rotation="-90 0 0">
+  <a-scene rotation="-90 0 0" scale=".75 .75 .7 a5">
      <a-marker preset='hiro'>
-    <a-gltf-model id="nuage1" src="Nuage1.glb"></a-gltf-model>
-    <a-gltf-model id="nuage2" src="Nuage2.glb"></a-gltf-model>
-    <a-gltf-model id="nuage3" src="Nuage3.glb"></a-gltf-model>
-    <a-gltf-model id="nuage4" src="Nuage4.glb"></a-gltf-model>
-    <a-gltf-model id="nuage5" src="Nuage5.glb"></a-gltf-model>
-    <a-gltf-model id="nuage6" src="Nuage6.glb"></a-gltf-model>
-    <a-gltf-model id="nuage7" src="Nuage7.glb"></a-gltf-model>
-    <a-gltf-model id="nuage8" src="Nuage8.glb"></a-gltf-model>
-    <a-gltf-model id="nuage+txt" src="Nuage+Text.glb"></a-gltf-model>
-    <a-gltf-model id="nuageMain" src="NuagePrincipal.glb"></a-gltf-model>  
+    <a-gltf-model id="nuage1" src="Nuage01.glb"></a-gltf-model>
+    <a-gltf-model position="0 70 0" scale="2 2 2" id="nuage1" src="Cloud.glb"></a-gltf-model>
+    <a-gltf-model id="nuage2" src="Nuage02.glb"></a-gltf-model>
+    <a-gltf-model id="nuage3" src="Nuage03.glb"></a-gltf-model>
+    <a-gltf-model id="nuage4" src="Nuage04.glb"></a-gltf-model>
+    <a-gltf-model id="nuage5" src="Nuage05.glb"></a-gltf-model>
+    <a-gltf-model id="nuage6" src="Nuage06.glb"></a-gltf-model>
+    <a-gltf-model id="nuage7" src="Nuage07.glb"></a-gltf-model>
+    <a-gltf-model id="nuage8" src="Nuage08.glb"></a-gltf-model>
+    <a-gltf-model id="nuage+txt" src="Nuage+txt.glb"></a-gltf-model>
+    <a-gltf-model id="nuageMain" src="NuageMain.glb"></a-gltf-model>  
  </a-marker>
     <a-entity position="0 65 0" rotation="-90 0 0">
       <a-camera></a-camera>
@@ -28,31 +29,17 @@
 
   <script>
 
+//
+      document.getElementById('nuage1').setAttribute('animation', {
+        property: 'position',
+        to: '0 0 7',
+        dur: 1000,
+        dir: 'alternate',
+        easing: 'linear',
+        loop: true
+      });
 
-      // ... Ajoutez d'autres animations ici ...
-
-      // Démarrer la vidéo avec la position liée à nuageMain
-      var video = document.createElement('a-video');
-      video.setAttribute('src', 'Video.mp4');
-      video.setAttribute('rotation', '-90 0 0');
-      video.setAttribute('width', '6.5');
-      video.setAttribute('height', '3.8');
-      video.setAttribute('autoplay', true);
-      // Lier la position de la vidéo à celle de nuageMain
-      var nuageMainPosition = document.getElementById('nuageMain').getAttribute('position');
-      video.setAttribute('position', nuageMainPosition.x + ' ' + nuageMainPosition.y + ' ' + nuageMainPosition.z);
-      document.querySelector('a-scene').appendChild(video);
-    });
-
-    
-    document.getElementById('nuage1').setAttribute('animation', {
-      property: 'position',
-      to: '0 0 7',
-      dur: 1000,
-      dir: 'alternate',
-      easing: 'linear',
-      loop: true
-    });
+      // Définir d'autres animations ici...
 
     document.getElementById('nuage2').setAttribute('animation', {
       property: 'position',
@@ -224,7 +211,7 @@
     }, 4500);
 
     setTimeout(function() {
-      var scene = document.querySelector('a-scene');
+      var scene = document.querySelector('a-marker');
       var video = document.createElement('a-video');
       video.setAttribute('src', 'Video.mp4');
       video.setAttribute('position', '0.1 56.90 -1.35');
@@ -234,38 +221,8 @@
       video.setAttribute('autoplay', true); // Assure que la vidéo se lance automatiquement
       scene.appendChild(video);
     }, 5500);
-  
-    var hiroMarker = document.getElementById('hiroMarker');
 
-    hiroMarker.addEventListener('markerFound', function () {
-      // Démarrer les animations ici
-      document.getElementById('nuage1').setAttribute('animation', {
-        property: 'position',
-        to: '0 0 7',
-        dur: 1000,
-        dir: 'alternate',
-        easing: 'linear',
-        loop: true
-      });
-      
-      hiroMarker.addEventListener('markerLost', function () {
-      // Arrêter les animations ici
-      document.getElementById('nuage1').removeAttribute('animation');
-      document.getElementById('nuage2').removeAttribute('animation');
-      document.getElementById('nuage3').removeAttribute('animation');
-      document.getElementById('nuage4').removeAttribute('animation');
-      document.getElementById('nuage5').removeAttribute('animation');
-      document.getElementById('nuage6').removeAttribute('animation');
-      document.getElementById('nuage7').removeAttribute('animation');
-      document.getElementById('nuage8').removeAttribute('animation');
-
-      // Supprimer la vidéo lors de la perte du marqueur
-      var video = document.querySelector('a-video');
-      if (video) {
-        video.parentNode.removeChild(video);
-      }
-    });
-
+    
   </script>
 </body>
 
