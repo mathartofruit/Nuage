@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <a-scene rotation="-90 0 0" scale=".75 .75 .7 a5">
+  <a-scene id="scene" rotation="-90 0 0" embeded>
      <a-marker preset='hiro'>
     <a-gltf-model id="nuage1" src="Nuage01.glb"></a-gltf-model>
     <a-gltf-model position="0 70 0" scale="2 2 2" id="nuage1" src="Cloud.glb"></a-gltf-model>
@@ -28,8 +28,6 @@
   </a-scene>
 
   <script>
-
-//
       document.getElementById('nuage1').setAttribute('animation', {
         property: 'position',
         to: '0 0 7',
@@ -218,11 +216,13 @@
       video.setAttribute('rotation', '-90 0 0');
       video.setAttribute('width', '6.5');
       video.setAttribute('height', '3.8');
-      video.setAttribute('autoplay', true); // Assure que la vidéo se lance automatiquement
+      video.setAttribute('loop', 'false');
       scene.appendChild(video);
+      setTimeout(function() {
+        video.parentNode.removeChild(video); // Supprimer la vidéo après 4 secondes
+      }, 4000);
     }, 5500);
 
-    
   </script>
 </body>
 
